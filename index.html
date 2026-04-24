@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usami Hisho | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --main: #1e3a8a;
+      --main-light: #dbeafe;
+      --accent: #38bdf8;
+      --text: #1f2937;
+      --sub: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 18px 45px rgba(30, 58, 138, 0.12);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      background: linear-gradient(135deg, #f6f8fc 0%, #eef6ff 45%, #ffffff 100%);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--main);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+
+    .nav-links a:hover {
+      color: var(--main);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 48px;
+      padding: 80px 0 64px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--main-light);
+      color: var(--main);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .badge span {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 strong {
+      color: var(--main);
+    }
+
+    .hero p {
+      color: var(--sub);
+      font-size: 18px;
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--main);
+      color: white;
+      box-shadow: 0 12px 24px rgba(30, 58, 138, 0.22);
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--main);
+      border: 1px solid var(--border);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .profile-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(229, 231, 235, 0.8);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 70%);
+      right: -70px;
+      top: -70px;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 36px;
+      background: linear-gradient(135deg, var(--main), var(--accent));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 44px;
+      font-weight: 900;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-card h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-card p {
+      color: var(--sub);
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      background: #f3f4f6;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      margin-bottom: 32px;
+    }
+
+    .section-title span {
+      color: var(--main);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.25;
+      margin-top: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .card .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: var(--main-light);
+      color: var(--main);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--sub);
+      font-size: 15px;
+    }
+
+    .work-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 12px 34px rgba(15, 23, 42, 0.05);
+    }
+
+    .work-thumb {
+      min-height: 130px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #dbeafe, #bae6fd);
+      display: grid;
+      place-items: center;
+      color: var(--main);
+      font-size: 38px;
+      font-weight: 900;
+    }
+
+    .work-item h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .work-item p {
+      color: var(--sub);
+      margin-bottom: 14px;
+    }
+
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .mini-tags span {
+      font-size: 12px;
+      color: var(--main);
+      background: var(--main-light);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-weight: 700;
+    }
+
+    .contact {
+      background: var(--main);
+      color: white;
+      border-radius: 36px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contact p {
+      color: rgba(255, 255, 255, 0.78);
+      margin-top: 10px;
+    }
+
+    .contact .btn {
+      background: white;
+      color: var(--main);
+    }
+
+    footer {
+      padding: 36px 24px;
+      text-align: center;
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-item {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="#top">Usami Hisho</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#works">Works</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="container">
+      <section class="hero">
+        <div>
+          <div class="badge"><span></span> Information Engineering / HCI / Game Design</div>
+          <h1>遊びと技術で、<br><strong>人の体験</strong>を設計する。</h1>
+          <p>
+            情報工学を学びながら、ゲーム・休憩・ユーザインタフェースをテーマに研究と開発を行っています。
+            「楽しい」だけで終わらない、生活や作業を少し良くするインタラクションを考えています。
+          </p>
+          <div class="buttons">
+            <a class="btn primary" href="#works">制作物を見る</a>
+            <a class="btn secondary" href="#contact">連絡する</a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="avatar">U</div>
+          <h2>宇佐見 飛翔</h2>
+          <p>
+            関西学院大学 工学部 情報工学系。HCI、エンタテインメントコンピューティング、
+            ゲームを用いた休憩支援システムに関心があります。
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">PyQt5</span>
+            <span class="tag">Game UI</span>
+            <span class="tag">HCI Research</span>
+            <span class="tag">Qualitative Analysis</span>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <span>ABOUT</span>
+          <h2>研究と制作の軸</h2>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="icon">🎮</div>
+            <h3>ゲーム体験の設計</h3>
+            <p>
+              音楽ゲームや短時間ゲームを題材に、没入感、操作感、達成感が人の気分や行動に与える影響を考えています。
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon">☕</div>
+            <h3>休憩支援</h3>
+            <p>
+              作業中に休憩を取りこぼさないための仕組みや、休憩の質を高めるインタラクションに関心があります。
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon">🧩</div>
+            <h3>プロトタイピング</h3>
+            <p>
+              Python、PyQt、HTML/CSSなどを使い、アイデアを実際に動く形へ落とし込むことを重視しています。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <span>SKILLS</span>
+          <h2>できること</h2>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Programming</h3>
+            <p>Python / C / HTML / CSS / JavaScript などを用いた開発。</p>
+          </article>
+          <article class="card">
+            <h3>UI Prototyping</h3>
+            <p>PyQt5 や Web 技術を用いた研究用プロトタイプの制作。</p>
+          </article>
+          <article class="card">
+            <h3>Research</h3>
+            <p>質問紙、半構造化インタビュー、質的分析を用いたユーザ体験の調査。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="works">
+      <div class="container">
+        <div class="section-title">
+          <span>WORKS</span>
+          <h2>制作物・研究テーマ</h2>
+        </div>
+        <div class="work-list">
+          <article class="work-item">
+            <div class="work-thumb">01</div>
+            <div>
+              <h3>ゲームを用いた休憩支援システム</h3>
+              <p>
+                作業終了後に半透明のゲーム画面を提示し、ユーザが「休憩を開始する」ことでゲーム操作と休憩タイマーを開始するシステム。
+                休憩への移行を妨げすぎず、自然に休憩を促すことを目指しています。
+              </p>
+              <div class="mini-tags">
+                <span>HCI</span><span>PyQt5</span><span>Pomodoro</span><span>Game Break</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-thumb">02</div>
+            <div>
+              <h3>音楽ゲーム風プロトタイプ</h3>
+              <p>
+                MIDI をもとにノーツを生成し、リズムに合わせて入力する音楽ゲーム風インタフェース。
+                休憩中の没入や心理的デタッチメントを生み出す要素として検討しています。
+              </p>
+              <div class="mini-tags">
+                <span>Rhythm Game</span><span>MIDI</span><span>Python</span><span>UI Design</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-thumb">03</div>
+            <div>
+              <h3>ユーザ体験の質的分析</h3>
+              <p>
+                回復体験、満足度、自由記述、半構造化インタビューをもとに、
+                ゲーム休憩がどのような体験を生むのかを探索的に整理しています。
+              </p>
+              <div class="mini-tags">
+                <span>Qualitative Research</span><span>Recovery Experience</span><span>Interview</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <div>
+            <h2>Contact</h2>
+            <p>
+              研究、制作、共同開発などに関する連絡はこちらからお願いします。
+              メールアドレスやSNSリンクは必要に応じて差し替えてください。
+            </p>
+          </div>
+          <a class="btn" href="mailto:your-email@example.com">Mail</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Usami Hisho. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
